@@ -9,6 +9,7 @@ class API {
 
   static final String host = 'ncov2019-admin.firebaseapp.com';
 
+  
   Uri tokenUri() => Uri(
       scheme: 'https',
       host: host,
