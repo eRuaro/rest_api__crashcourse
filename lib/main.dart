@@ -42,10 +42,15 @@ class _HomePageState extends State<HomePage> {
         title: Text('Flutter Demo'),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          MaterialButton(onPressed: () {
-            _getToken();
-          }),
+          MaterialButton(
+            onPressed: () {
+              _getToken();
+            },
+            color: Colors.blue,
+          ),
           Text(_accessToken),
         ],
       ),
