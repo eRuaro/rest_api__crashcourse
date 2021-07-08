@@ -47,3 +47,5 @@ app.*.map.json
 
 testing.http
 api_keys.dart
+
+.vscode/
