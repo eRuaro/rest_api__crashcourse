@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rest_api__crashcourse/app/services/api.dart';
+import 'package:rest_api__crashcourse/app/services/api_service.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,8 +14,41 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: null,
+      home: HomePage(),
     );
   }
 }
 
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  String _accessToken = '';
+
+  void _getToken() async {
+    final apiService = APIService(api: API.sandbox());
+    final accessToken = await apiService.getAccessToken();
+    setState(() {
+      _accessToken = accessToken;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Flutter Demo'),
+      ),
+      body: Column(
+        children: [
+          MaterialButton(onPressed: () {
+            _getToken();
+          }),
+          Text(_accessToken),
+        ],
+      ),
+    );
+  }
+}
